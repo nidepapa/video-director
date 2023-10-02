@@ -2,6 +2,7 @@ import os
 import openai
 from metaphor_python import Metaphor
 from datetime import datetime, timedelta
+import sys
 
 os.environ["OPENAI_API_KEY"] = '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'
 os.environ["METAPHOR_API_KEY"] = '3ba9f09f-34e0-493e-a6e2-835304c79916'
@@ -12,8 +13,8 @@ class VideoDirector:
         self.metaphor = Metaphor(os.getenv("METAPHOR_API_KEY"))
         openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    def getMetaphorSearch(self):
-        USER_QUESTION = "What's the popular travelling blog only about Los Angeles?"
+    def getMetaphorSearch(self, city):
+        USER_QUESTION = "What's the popular travelling blog only about {}?".format(city)
         SYSTEM_MESSAGE = "You are a helpful assistant that generates search queiries based on user questions. Only generate one search query."
 
         completion = openai.ChatCompletion.create(
@@ -75,6 +76,7 @@ class VideoDirector:
 
 if __name__ == "__main__":
     director = VideoDirector()
-    query_content = director.getMetaphorSearch()
+    city = sys.argv[1]
+    query_content = director.getMetaphorSearch(city)
     demo_script = director.vlogScriptGenerator(query_content)
     print(demo_script)

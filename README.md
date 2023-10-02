@@ -7,8 +7,18 @@ An automate vlog/video script generator empowered by Metaphor and OpenAI.
 Download the package
 
 ```bash
-python3 app.py
+python3 app.py <location name>
 ```
+
+## Demo
+
+```bash
+python3 app.py Los Angeles
+```
+
+created a script with 3 scenes about LA
+
+![img.png](img.png)
 
 ## API - getMetaphorSearch
 
@@ -17,8 +27,8 @@ and return blog content of recent (3 months) related to input tourism attraction
 
 ```python
 
-    def getMetaphorSearch(self):
-        USER_QUESTION = "What's the popular travelling blog only about Los Angeles?"
+    def getMetaphorSearch(self, city):
+        USER_QUESTION = "What's the popular travelling blog only about {}?".format(city)
         SYSTEM_MESSAGE = "You are a helpful assistant that generates search queiries based on user questions. Only generate one search query."
 
         completion = openai.ChatCompletion.create(
