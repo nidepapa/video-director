@@ -56,7 +56,7 @@ class VideoDirector:
                             "various icons highlighting key locations] [SCENE 3: Road Status] Narrator (Voiceover): " \
                             "'First, let's check out the road status.' [Visuals: A map showing road conditions] " \
                             "Narrator (Voiceover): 'Find out current road conditions, including access to Paradise " \
-                            "during the winter season.' [Visuals: Snowy roads and tire chains]"
+                            "during the winter season.' [Visuals: Snowy roads nnnnnnn and tire chains]"
 
         completion = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
